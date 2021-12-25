@@ -23,5 +23,5 @@ jobs:
       run: |
         sudo apt update
         sudo apt install dos2unix -y
-        sudo dos2unix entrypoint.shfdes
+        sudo dos2unix entrypoint.sh
         docker buildx build . -t archef2000/sslh:latest-test --platform linux/amd64,linux/arm/v7,linux/arm64 --push
