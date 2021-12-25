@@ -1,4 +1,4 @@
-FROM arm32v6/alpine:latest
+FROM alpine:latest
 MAINTAINER Archef
 
 ENV LISTEN_IP 0.0.0.0
