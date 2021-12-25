@@ -20,8 +20,7 @@ jobs:
         docker buildx inspect --bootstrap
         
     - name: docker build sslh
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}   
       run: |
-        sudo apt update
-        sudo apt install dos2unix -y
-        sudo dos2unix entrypoint.sh
-        docker buildx build . -t archef2000/sslh:latest-test --platform linux/amd64,linux/arm/v7,linux/arm64 --push
+        docker buildx build . -t $DOCKER_USER/sslh:latest-test --platform linux/amd64,linux/arm/v7,linux/arm64 --push
