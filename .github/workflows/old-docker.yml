@@ -20,11 +20,17 @@ jobs:
         docker buildx use multiarch
         docker buildx inspect --bootstrap
     - name: docker build sslh http-old
-      run: |
-        docker buildx build ./http -t archef2000/sslh:http-old --platform linux/amd64,linux/arm/v7,linux/arm64 --push
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}   
+        run: |
+          docker buildx build ./http -t $DOCKER_USER/sslh:http-old --platform linux/amd64,linux/arm/v7,linux/arm64 --push
     - name: docker build sslh both-old
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}         
       run: |
-        docker buildx build ./both -t archef2000/sslh:both-old --platform linux/amd64,linux/arm/v7,linux/arm64 --push
+        docker buildx build ./both -t $DOCKER_USER/sslh:both-old --platform linux/amd64,linux/arm/v7,linux/arm64 --push
     - name: docker build sslh https-old
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}   
       run: |        
-        docker buildx build ./https -t archef2000/sslh:https-old --platform linux/amd64,linux/arm/v7,linux/arm64 --push
+        docker buildx build ./https -t $DOCKER_USER/sslh:https-old --platform linux/amd64,linux/arm/v7,linux/arm64 --push
