@@ -1,4 +1,3 @@
-
 #!/bin/sh
 
 sslh -f -u root --listen $LISTEN_IP:$LISTEN_PORT \
