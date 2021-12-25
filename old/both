@@ -12,7 +12,7 @@ ENV HTTPS_HOST=localhost
 ENV HTTPS_PORT=8443
 ENV HTTP_HOST=localhost
 ENV HTTP_PORT=8080
-/bin/sh -c apk update &&
-ADD file ... in /usr/local/bin/entrypoint.sh
-/bin/sh -c chmod +x /usr/local/bin/entrypoint.sh
+RUN apk update
+COPY ./old/entrypoint-both.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
