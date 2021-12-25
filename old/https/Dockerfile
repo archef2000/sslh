@@ -6,9 +6,9 @@ ENV SSH_HOST=localhost
 ENV SSH_PORT=22
 ENV OPENVPN_HOST=localhost
 ENV OPENVPN_PORT=1194
-ENV HTTP_HOST=localhost
-ENV HTTP_PORT=8080
+ENV HTTPS_HOST=localhost
+ENV HTTPS_PORT=8443
 RUN apk update
-COPY ./old/entrypoint-http.sh /usr/local/bin/entrypoint.sh
+COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
