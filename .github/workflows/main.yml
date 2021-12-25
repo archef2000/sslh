@@ -21,4 +21,4 @@ jobs:
         
     - name: docker build sslh
       run: |
-        docker buildx build --platform linux/amd64, linux/arm, linux/arm64 -t archef2000/sslh:latest-test --push .
+        docker buildx build ./ --platform linux/amd64, linux/arm, linux/arm64 -t archef2000/sslh:latest-test --push
