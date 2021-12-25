@@ -1,6 +1,0 @@
-    - name: install dos2unix
-      run: |
-        sudo apt install dos2unix -y
-        sudo dos2unix ./http/entrypoint.sh
-        sudo dos2unix ./https/entrypoint.sh
-        sudo dos2unix ./both/entrypoint.sh
