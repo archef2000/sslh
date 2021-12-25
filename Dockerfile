@@ -1,4 +1,4 @@
-FROM alpine:3.9.4
+FROM alpine:3.15.0
 MAINTAINER Archef
 
 LABEL org.label-schema.vcs-url="https://github.com/Archef2000/sslh" \
