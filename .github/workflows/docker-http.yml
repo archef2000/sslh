@@ -1,4 +1,4 @@
-name: Docker HTTP_OLD SSLH
+name: Docker SSLH OLD
 
 on: [push]
 
@@ -18,10 +18,20 @@ jobs:
         docker buildx create --name multiarch
         docker buildx use multiarch
         docker buildx inspect --bootstrap
-        
-    - name: docker build sslh http-old
+
+    - name: install dos2unix
       run: |
         sudo apt update
         sudo apt install dos2unix -y
-        sudo dos2unix entrypoint.sh
+        sudo dos2unix ./http/entrypoint.sh
+        sudo dos2unix ./https/entrypoint.sh
+        sudo dos2unix ./both/entrypoint.sh
+    - name: docker build sslh http-old
+      run: |
         docker buildx build ./http -t archef2000/sslh:http-old --platform linux/amd64,linux/arm/v7,linux/arm64 --push
+    - name: docker build sslh both-old
+      run: |
+        docker buildx build ./both -t archef2000/sslh:http-old --platform linux/amd64,linux/arm/v7,linux/arm64 --push
+    - name: docker build sslh https-old
+      run: |        
+        docker buildx build ./https -t archef2000/sslh:https-old --platform linux/amd64,linux/arm/v7,linux/arm64 --push
