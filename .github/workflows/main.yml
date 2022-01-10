@@ -2,7 +2,6 @@ name: Docker SSLH
 
 on:
     workflow_dispatch:
-    push:
 
 jobs:
   build:
