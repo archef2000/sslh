@@ -11,11 +11,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: docker login
-      env:
-        DOCKER_USER: ${{ secrets.DOCKER_USER }}   
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
       run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USER }} --password-stdin 
     - name: docker buildx multiarch
       run: |
         docker buildx create --name multiarch
@@ -27,3 +24,5 @@ jobs:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}   
       run: |
         docker buildx build . -t $DOCKER_USER/sslh:latest --platform linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x,linux/386 --push
+# 
+# linux/386,linux/amd64,linux/arm/v6,klinux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
