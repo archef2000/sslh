@@ -14,7 +14,7 @@ LABEL org.label-schema.vcs-url="https://github.com/Archef2000/sslh" \
       org.label-schema.schema-version="1.0" \
       maintainer="Archef2000"
       
-RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ sslh && rm /var/cache/apk/*
+RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ sslh
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
