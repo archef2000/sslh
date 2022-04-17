@@ -3,7 +3,7 @@ MAINTAINER Archef2000
 
 ENV SSH_HOST=localhost
 ENV HTTP_HOST=localhost
-ENV HTTPS_HOST=localhost
+#ENV HTTPS_HOST=localhost
 ENV OPENVPN_HOST=localhost
 ENV SHADOWSOCKS_HOST=localhost
 ENV SOCKS5_HOST=localhost
