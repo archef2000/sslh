@@ -3,7 +3,7 @@ RUN apk add libconfig-dev pcre2-dev musl-dev libev-dev make automake g++ git && 
       git clone https://github.com/yrutschle/sslh && \
       cd sslh && \
       sed -i 's/conf2struct/#conf2struct/g' Makefile && \
-      make
+      /bin/sh -c make
 
 #
 #ADD . /sslh
