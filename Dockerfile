@@ -5,7 +5,7 @@ RUN apk add libconfig-dev pcre2-dev musl-dev libev-dev make automake g++ wget gi
       mv sslh-2.0-rc1 sslh && \
       cd sslh && \
       sed -i 's/conf2struct/#conf2struct/g' Makefile && \
-      /bin/sh -c make sslh-fork && \
+      /bin/sh -c make sslh-fork
 
 FROM alpine:3.15.0
 MAINTAINER Archef2000
