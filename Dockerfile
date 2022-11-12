@@ -4,6 +4,7 @@ RUN apk add libconfig-dev pcre2-dev musl-dev libev-dev make automake g++ wget gi
       #cd sslh && \
       wget https://codeload.github.com/yrutschle/sslh/zip/refs/tags/v2.0-rc1 && \
       unzip v2.0-rc1 && \
+      cd sslh-2.0-rc1/ && \
       sed -i 's/conf2struct/#conf2struct/g' Makefile && \
       /bin/sh -c make
 
