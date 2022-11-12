@@ -1,5 +1,7 @@
 FROM alpine:3.15.0 as build
 
+ADD . /sslh
+
 RUN \
   apk add \
     gcc \
@@ -9,8 +11,8 @@ RUN \
     musl-dev \
     pcre2-dev \
     perl && \
-  make docker && \
-  git clone https://github.com/yrutschle/sslh/ && \
+  #make docker && \
+  #git clone https://github.com/yrutschle/sslh/ && \
   cd /sslh && \
   make sslh-select && \
   strip sslh-select
