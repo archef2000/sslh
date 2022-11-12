@@ -25,8 +25,8 @@ jobs:
       run: |
         git clone https://github.com/yrutschle/sslh
         cd sslh
-        apt install 
-        apt install -y libconfig-dev
+        sudo apt install 
+        sudo apt install -y libconfig-dev
         make sslh-select
         docker buildx build . -t $DOCKER_USER/sslh:latest --platform linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386 --push
 # 
