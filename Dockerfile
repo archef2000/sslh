@@ -14,14 +14,6 @@ RUN \
   make systemd-sslh-generator && \
   make sslh-select && \
   strip sslh-select
-
-FROM alpine:latest
-
-COPY --from=build /sslh/sslh-select /sslh
-
-RUN apk --no-cache add libconfig pcre2
-
-ENTRYPOINT [ "/sslh", "--foreground"]
 FROM alpine:3.15.0
 MAINTAINER Archef2000
 
@@ -39,7 +31,7 @@ LABEL org.label-schema.vcs-url="https://github.com/Archef2000/sslh" \
       maintainer="Archef2000"
       
 RUN apk --no-cache add libconfig pcre2
-COPY /sslh/sslh-select /sslh
+COPY --from=build /sslh/sslh-select /sslh
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
