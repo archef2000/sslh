@@ -2,7 +2,7 @@ FROM alpine:3.15 as build
 RUN apk add libconfig-dev pcre2-dev musl-dev libev-dev make automake g++ git && \
       git clone https://github.com/yrutschle/sslh && \
       cd sslh && \
-      sed -i 's/conf2struct/#conf2struct/g' Makefile && \
+      sed -i 's/conf2struct/conf2struct/g' Makefile && \
       /bin/sh -c make
 
 #
