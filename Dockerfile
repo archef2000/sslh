@@ -1,4 +1,4 @@
-FROM alpine:3.15.0
+FROM alpine:3.15
 MAINTAINER Archef2000
 
 #ENV SSH_HOST=localhost
