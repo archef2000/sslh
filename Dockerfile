@@ -9,7 +9,7 @@ RUN \
     musl-dev \
     pcre2-dev \
     perl && \
-  make docker
+  make docker && \
   git clone https://github.com/yrutschle/sslh/ && \
   cd /sslh && \
   make sslh-select && \
