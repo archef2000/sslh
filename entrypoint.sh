@@ -8,6 +8,6 @@ SSLH_OPTS=
 [ ! -z "${SOCKS5_HOST}" ] && SSLH_OPTS="${SSLH_OPTS} --socks5 ${SOCKS5_HOST}:${SOCKS5_PORT:=1080}"
 [ "${TRANSPARENT:=false}" = "true" ] && SSLH_OPTS="${SSLH_OPTS} --transparent"
 
-sslh -f -u root --listen 0.0.0.0:80 --listen 0.0.0.0:443 \
+/sslh -f -u root --listen 0.0.0.0:80 --listen 0.0.0.0:443 \
    ${SSLH_OPTS} \
    $@
