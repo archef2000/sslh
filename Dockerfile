@@ -11,10 +11,11 @@ RUN \
     pcre2-dev \
     perl && \
   cd /sslh && \
-  make systemd-sslh-generator
+  make systemd-sslh-generator && \
+  make sslh-select
   #&& \
-  #make sslh-select && \
-  strip sslh-select
+  # && \
+  #strip sslh-select
 FROM alpine:3.15.0
 MAINTAINER Archef2000
 
