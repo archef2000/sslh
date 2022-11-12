@@ -1,21 +1,21 @@
-FROM alpine:latest as build
-
-ADD . /sslh
-
-RUN \
-  apk add \
-    gcc \
-    libconfig-dev \
-    make \
-    musl-dev \
-    pcre2-dev \
-    perl && \
-  cd /sslh && \
-  make systemd-sslh-generator && \
-  make sslh-select
-  #&& \
-  # && \
-  #strip sslh-select
+#FROM alpine:latest as build
+#
+#ADD . /sslh
+#
+#RUN \
+#  apk add \
+#    gcc \
+#    libconfig-dev \
+#    make \
+#    musl-dev \
+#    pcre2-dev \
+#    perl && \
+#  cd /sslh && \
+#  make systemd-sslh-generator && \
+#  make sslh-select
+#  #&& \
+#  # && \
+#  #strip sslh-select
 FROM alpine:3.15.0
 MAINTAINER Archef2000
 
@@ -32,8 +32,8 @@ LABEL org.label-schema.vcs-url="https://github.com/Archef2000/sslh" \
       org.label-schema.schema-version="1.0" \
       maintainer="Archef2000"
       
-RUN apk --no-cache add libconfig pcre2
-COPY --from=build /sslh/sslh-select /sslh
+#RUN apk --no-cache add libconfig pcre2
+#COPY --from=build /sslh/sslh-select /sslh
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
