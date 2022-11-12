@@ -1,0 +1,44 @@
+name: Docker SSLH 
+
+on:
+  schedule:
+    - cron:  '0 0 * * 1,5'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker login
+      run: |
+        echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USER }} --password-stdin 
+    - name: docker buildx multiarch
+      run: |
+        docker buildx create --name multiarch
+        docker buildx use multiarch
+        docker buildx inspect --bootstrap
+    -
+        # Add support for more platforms with QEMU (optional)
+        # https://github.com/docker/setup-qemu-action
+      name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+    -
+      name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+      
+    - name: docker build sslh
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}   
+      run: |
+        docker buildx build . -t $DOCKER_USER/sslh:dev --platform linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v6,klinux/arm/v7,linux/s390x,linux/386 --push
+        #git clone https://github.com/yrutschle/sslh
+        #cd sslh
+        #sed -i 's/conf2struct/#conf2struct/g' Makefile
+        #sudo apt update 
+        #sudo apt install gcc  libconfig-dev  make  musl-dev  libpcre2-dev   perl
+        #make sslh-select
+        #cp -rf ../Dockerfile Dockerfile
+        #cp -rf ../entrypoint.sh entrypoint.sh
+        # 
+# linux/386,linux/amd64,linux/arm/v6,klinux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
