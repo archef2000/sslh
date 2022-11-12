@@ -1,4 +1,10 @@
-#FROM alpine:latest as build
+FROM alpine:latest as build
+RUN apk add libconfig-dev pcre2-dev musl-dev libev-dev make automake g++ git && \
+      git clone https://github.com/yrutschle/sslh && \
+      cd sslh && \
+      sed -i 's/conf2struct/#conf2struct/g' Makefile && \
+      make
+
 #
 #ADD . /sslh
 #
@@ -16,6 +22,7 @@
 #  #&& \
 #  # && \
 #  #strip sslh-select
+
 FROM alpine:3.15.0
 MAINTAINER Archef2000
 
