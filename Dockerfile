@@ -8,6 +8,8 @@ RUN apk add libconfig-dev pcre2-dev musl-dev libev-dev make automake g++ wget gi
       sed -i 's/conf2struct/#conf2struct/g' Makefile && \
       ls && \
       /bin/sh -c make && \
+      mkdir /sslh && \
+      cp sslh-fork /sslh/sslh-fork && \
       ls
 
 #
