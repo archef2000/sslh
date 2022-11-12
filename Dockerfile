@@ -47,9 +47,9 @@ LABEL org.label-schema.vcs-url="https://github.com/Archef2000/sslh" \
       maintainer="Archef2000"
       
 RUN apk --no-cache add libconfig pcre2
-COPY --from=build /sslh/sslh-fork /usr/local/bin/sslh
-RUN chmod +x /usr/local/bin/sslh
-#RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ sslh
+#COPY --from=build /sslh/sslh-fork /usr/local/bin/sslh
+#RUN chmod +x /usr/local/bin/sslh
+RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ sslh
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
