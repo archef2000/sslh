@@ -34,7 +34,7 @@ LABEL org.label-schema.vcs-url="https://github.com/Archef2000/sslh" \
       
 RUN apk --no-cache add libconfig pcre2
 COPY --from=build /sslh/sslh-select /sslh
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY ../entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/bin/sh", "/usr/local/bin/entrypoint.sh"]
