@@ -30,6 +30,7 @@ jobs:
         sudo apt install gcc  libconfig-dev  make  musl-dev  libpcre2-dev   perl
         make sslh-select
         cp -rf ../Dockerfile Dockerfile
+        cp -rf ../entrypoint.sh entrypoint.sh
         docker buildx build . -t $DOCKER_USER/sslh:latest --platform linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386 --push
 # 
 # linux/386,linux/amd64,linux/arm/v6,klinux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
