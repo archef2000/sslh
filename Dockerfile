@@ -1,3 +1,18 @@
+# FROM alpine:3.15 as build
+# RUN apk add libconfig-dev pcre2-dev musl-dev libev-dev make automake g++ wget git && \
+#       #git clone https://github.com/yrutschle/sslh && \
+#       #cd sslh && \
+#       wget https://codeload.github.com/yrutschle/sslh/zip/refs/tags/v2.0-rc1 && \
+#       unzip v2.0-rc1 && \
+#       ls && \
+#       mv sslh-2.0-rc1 sslh && \
+#       cd sslh && \
+#       #cd sslh-2.0-rc1/ && \
+#       sed -i 's/conf2struct/#conf2struct/g' Makefile && \
+#       ls && \
+#       /bin/sh -c make sslh-fork && \
+#       ls
+
 FROM alpine:3.15
 MAINTAINER Archef2000
 
