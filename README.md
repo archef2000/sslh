@@ -17,7 +17,7 @@
 </blockquote>
 <pre><code class="language-bash">docker run -e SSH_HOST=host -e SSH_PORT=2222 -e HTTP_HOST=somehost.internal \
 -e HTTP_HOST=8080 -e HTTPS_HOST=somehost.internal -e HTTPS_PORT=8443 -e OPENVPN_HOST=openvpn \
--e OPENVPN_PORT=1194 -e SOCKS5_PORT=1080 -e SOCKS5_HOST=socks5 -p 443:443 -p 80:80 archef2000/sslh</code></pre>
+-e OPENVPN_PORT=1194 -e SOCKS5_PORT=1080 -e SOCKS5_HOST=socks5 -e ENABLE_IPV6=true -p 443:443 -p 80:80 archef2000/sslh</code></pre>
 <h3>Available Environment Variables</h3>
 <p>Naming should be self explanatory, defaults are indicated.</p>
 <p>If a <code>*_HOST</code> environment variable is omitted, it will not be configured.</p>
@@ -60,5 +60,6 @@ services:
       - OPENVPN_PORT=1194
       - SOCKS5_HOST=socks5
       - SOCKS5_PORT=1080
+      - ENABLE_IPV6=true
 </code></pre>
 <hr>
